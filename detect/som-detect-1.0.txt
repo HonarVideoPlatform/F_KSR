@@ -1,0 +1,45 @@
+Copyright (c) 2011 Big Nerd Software, LLC
+ALL RIGHTS RESERVED
+
+This javascript API will use the best possible method for the platform/browser to get java installed if its not available.
+After a successful detection it will set a cookie so any future detection is skipped.
+
+// Top Level Functions
+1. somDetect(options)
+2. somDetectShowMacLionInstall(div_id)
+
+//
+// 1. somDetect(options) - Starts up the detection process
+//
+  options = {
+      /* Required: Path to the detection html files that we supply to you */
+      path: '/detect/',
+
+      /* Required: Callback function called with result (see Callback Function below for more detail) */
+      callback: function(result) {...}
+  }
+
+  -- Callback Function --
+
+    The callback function is required and will be called back once with one of these results:
+
+      callBack('javaDisabled') - Java plugin is installed but is disabled in the browser.
+
+      callBack('macLionNeedsInstall') - Java plugin isn't installed and this is Mac OSX 10.7 (Lion) which means the
+                                        user needs to click on the special "Missing Plug-in" link to make the install
+                                        happen. (see Mac Lion Install below for more detail)
+
+      callBack('javaNotDetected') - Java plugin isn't detected and we can't auto install.
+
+      callBack('success') - Java plugin is installed and looks ready to go.
+
+
+
+//
+// 2. somDetectShowMacLionInstall(div_id) - Shows a small applet so the Mac 10.6 and 10.7 users can click on the "Missing Plug-in" or "Inactive Plug-in"
+//                                          link to get java installed or enabled.
+//
+somDetectShowMacLionInstall(div_id)
+
+  div_id - The id of a div on the page that we can use to show a small (150x30) applet.
+

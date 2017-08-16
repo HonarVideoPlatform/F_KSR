@@ -1,0 +1,13 @@
+<html>
+<body>
+<div id="embedContainer"></div>
+<script type="text/javascript">
+    function _somDetectReady() {
+        parent._somDetectReady();
+    }
+
+    document.getElementById("embedContainer").innerHTML =
+            '<embed archive="ScreencastOMaticDetect-2.5.jar" code="DetectApplet.class" width="200" height="75" type="application/x-java-applet" mayscript="true" doSetup="_somDetectReady"/>'
+</script>
+</body>
+</html>

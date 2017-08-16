@@ -1,0 +1,21 @@
+<html>
+<body>
+
+<applet name="DetectApplet" width="200" height="75" archive="ScreencastOMaticDetect-2.5.jar" code="DetectApplet.class" MAYSCRIPT></applet>;
+
+<script type="text/javascript">
+    function test() {
+        try {
+            document.DetectApplet.isActive();
+            parent._somDetectReady();
+        }
+        catch(e) {
+            parent._somDetectLionNeedsInstall();
+        }
+    }
+
+    setTimeout(test,500);
+</script>
+
+</body>
+</html>

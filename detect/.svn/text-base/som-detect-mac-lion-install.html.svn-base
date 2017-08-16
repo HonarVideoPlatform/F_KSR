@@ -1,0 +1,5 @@
+<html>
+<body>
+<applet name="DetectApplet" width="150" height="30" archive="ScreencastOMaticDetect-2.5.jar" code="DetectApplet.class" MAYSCRIPT></applet>;
+</body>
+</html>

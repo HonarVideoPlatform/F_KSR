@@ -1,0 +1,60 @@
+<html>
+<body>
+<div id="objectContainer"></div>
+<script type="text/javascript">
+    var cabUrl = parent._somWinJavaCabInstallUrl;
+
+    function _somDetectReady(ignored, javaversion) {
+        if (_checkJavaVersion(javaversion)) {
+            parent._somDetectReady();
+        }
+        else {
+            document.getElementById("objectContainer").innerHTML =
+                    '<object style="border: 1px solid black;" classid="clsid:CAFEEFAC-0016-0000-0027-ABCDEFFEDCBA" width="200" height="75"' +
+                            'codebase="http://java.sun.com/update/1.6.0/jinstall-6u27-windows-i586.cab#Version=1,6,0,27">' +
+                            '<param name="archive" value="ScreencastOMaticDetect-2.5.jar">' +
+                            '<param name="code" value="DetectApplet.class">' +
+                            '<param name="type" value="application/x-java-applet;jpi-version=1.6.0_27">' +
+                            '<param name="mayscript" value="true">' +
+                            '<param name="doSetup" value="_somDetectReady">' +
+                            '</object>';
+        }
+    }
+
+    function _checkJavaVersion(javaversion) {
+        if (!parent._somDetectOptions.minJavaVersion)
+            return true;
+
+        var wantVersion = parent._somDetectOptions.minJavaVersion;
+        var gotVersion = javaversion + '';
+
+        var wantParts = wantVersion.split(".");
+        var gotParts = gotVersion.split(".");
+
+        var wantMajor = parseInt(wantParts[0]);
+        var wantMinor = parseInt(wantParts[1]);
+        var wantSubVersion = parseInt(wantParts[2].split("_")[0]);
+        var wantBuild = parseInt(wantParts[2].split("_")[1]);
+
+        var gotMajor = parseInt(gotParts[0]);
+        var gotMinor = parseInt(gotParts[1]);
+        var gotSubVersion = parseInt(gotParts[2].split("_")[0]);
+        var gotBuild = parseInt(gotParts[2].split("_")[1]);
+
+        if (gotMajor != wantMajor)
+            return gotMajor > wantMajor;
+
+        if (gotMinor != wantMinor)
+            return gotMinor > wantMinor;
+
+        if (gotSubVersion != wantSubVersion)
+            return gotSubVersion > wantSubVersion;
+
+        return gotBuild >= wantBuild;
+    }
+
+    document.getElementById("objectContainer").innerHTML =
+            '<object style="border: 1px solid black;" classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" width="200" height="75" codebase="'+cabUrl+'"> <param name="archive" value="ScreencastOMaticDetect-2.5.jar"> <param name="code" value="DetectApplet.class"> <param name="mayscript" value="true"> <param name="doSetup" value="_somDetectReady"> </object>';
+</script>
+</body>
+</html>

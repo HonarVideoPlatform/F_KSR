@@ -1,0 +1,22 @@
+<html>
+<body>
+<div id="embedContainer"></div>
+<script type="text/javascript">
+    var embedType = 'application/x-java-applet';
+    var installUrl = parent._somWinJavaInstallUrl;
+
+    //var is64Windows = navigator.userAgent.indexOf("WOW64")>0;
+    //if (is64Windows) {
+    //    embedType = 'application/x-java-applet;version=1.6';
+    //    installUrl = parent._somWinJavaInstallUrl64;
+    //}
+
+    function _somDetectReady() {
+        parent._somDetectReady();
+    }
+
+    document.getElementById("embedContainer").innerHTML =
+            '<embed archive="ScreencastOMaticDetect-2.5.jar" code="DetectApplet.class" width="200" height="75" type="'+embedType+'" pluginspage="'+installUrl+'" mayscript="true" doSetup="_somDetectReady"/>'
+</script>
+</body>
+</html>
